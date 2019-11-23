@@ -144,7 +144,7 @@ export default class Welcome extends React.Component {
                     <TabBar type='tab' context='对就是你 好使吗?'>
                         tab2 哼∮
                     </TabBar>
-                    <TabBar type='tab' context='踩我鞋了  用户链接可以点嘛? 邮箱不一致会怎样?'>
+                    <TabBar type='tab' context='踩我鞋了  用户链接可以点嘛? 邮箱不一致会怎样? 确实不能点击 没有验证的用户 现在改一下git config 邮箱 试试'>
                         tab3 诶😳
                     </TabBar>
                 </Tabs>
