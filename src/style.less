@@ -1,0 +1,77 @@
+img {
+    width: 200px;
+    height: 200px;
+}
+.gallery-img {
+    width: 200px;
+    height: 200px;
+    margin: 150px auto;
+    position: relative;
+    .cube {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+        transform-style: preserve-3d;
+        transform: rotateX(-30deg) rotateY(-80deg);
+        animation: rotate linear 20s infinite;
+        div {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            opacity: 0.8;
+            transition: all .4s;
+            background-color: lightblue;
+            img {
+                opacity: 0.8;
+            }
+        }
+        .img_0 {
+            transform: rotateY(0deg) translateZ(100px);
+        }
+        .img_1 {
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        .img_2 {
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        .img_3 {
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        .img_4 {
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        .img_5 {
+            transform: translateZ(-100px) rotateY(180deg); /* 为什么需要这个顺序才可以呢？不然会抖动 */
+        }
+    }
+
+    .cube:hover {
+        .img_0 {
+            transform: rotateY(0deg) translateZ(200px);
+        }
+        .img_1 {
+            transform: rotateY(-90deg) translateZ(200px);
+        }
+        .img_2 {
+            transform: rotateY(90deg) translateZ(200px);
+        }
+        .img_3 {
+            transform: rotateX(90deg) translateZ(200px);
+        }
+        .img_4 {
+            transform: rotateX(-90deg) translateZ(200px);
+        }
+        .img_5 {
+            transform: translateZ(-200px) rotateY(180deg); /* 为什么需要这个顺序才可以呢？不然会抖动 */
+        }
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotateX(0deg) rotateY(0deg);
+        }
+        to {
+            transform: rotateX(360deg) rotateY(360deg);
+        }
+    }
+}
