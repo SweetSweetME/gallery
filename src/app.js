@@ -138,13 +138,13 @@ export default class Welcome extends React.Component {
         return (
             <ThemeProvider value={{ themeColor: theme }}>
                 <Tabs wrapClass="gallery-tab">
-                    <TabBar type='tab' context='你给我站住！'>
+                    <TabBar type='tab' context='你给我站住！windows试一下'>
                         tab1 噢😯
                     </TabBar>
-                    <TabBar type='tab' context='对就是你'>
+                    <TabBar type='tab' context='对就是你 好使吗?'>
                         tab2 哼∮
                     </TabBar>
-                    <TabBar type='tab' context='踩我鞋了'>
+                    <TabBar type='tab' context='踩我鞋了  用户链接可以点嘛? 邮箱不一致会怎样?'>
                         tab3 诶😳
                     </TabBar>
                 </Tabs>
