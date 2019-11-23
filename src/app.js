@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from './context';
 import { Page } from 'COMP';
 import { Img } from './img';
-import { Student, HOC, Avatar } from 'COMP';
+import { Student, HOC, Avatar, Tabs, TabBar } from 'COMP';
 import EasyHttp from './fetch';
 import AA from './aa';
 import Decorator from './decorator';
@@ -10,7 +10,7 @@ import 'antd/dist/antd.css';
 import './style.less';
 
 @HOC.Loading
-@Decorator // 鼠标变👋
+// @Decorator // 鼠标变👋
 export default class Welcome extends React.Component {
 
     deleteTimer = null;
@@ -133,10 +133,21 @@ export default class Welcome extends React.Component {
     render() {
         const { state: { photos, theme, message, hello } } = this;
         // console.log(`%c${performance.now()}%cms `, 'color: green', 'color: black');
-        console.log(`%c父组件被渲染`, 'color: green');
+        // console.log(`%c父组件被渲染`, 'color: green');
         // 提供者提供数据
         return (
             <ThemeProvider value={{ themeColor: theme }}>
+                <Tabs wrapClass="gallery-tab">
+                    <TabBar type='tab' context='你给我站住！'>
+                        tab1 噢😯
+                    </TabBar>
+                    <TabBar type='tab' context='对就是你'>
+                        tab2 哼∮
+                    </TabBar>
+                    <TabBar type='tab' context='踩我鞋了'>
+                        tab3 诶😳
+                    </TabBar>
+                </Tabs>
                 <h1>{hello.info}</h1>
                 {Avatar({
                     imgUrl: require('./images/8.jpg'),

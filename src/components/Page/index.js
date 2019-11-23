@@ -26,7 +26,7 @@ export default class Page extends React.Component {
 
     render() {
         // console.log(this.props.message);
-        console.log(`%c子组件被渲染`, 'color: red');
+        // console.log(`%c子组件被渲染`, 'color: red');
         return (
             <div>
                 {this.props.message.info}
