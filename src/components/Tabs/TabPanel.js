@@ -2,7 +2,7 @@ import React from 'react';
 
 const TabPanel = props => {
     return (
-        <div className="tab-panel" style={{ display: props.active ? 'block' : 'none' }}>
+        <div className="comp-tabs-tabpanel">
             {props.children}
         </div>
     )

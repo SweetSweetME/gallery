@@ -3,7 +3,7 @@ import React from 'react';
 export default class Tabs extends React.Component {
 
     static defaultProps = {
-        tabNum: 3
+        wrapClass: ''
     }
 
     constructor(props) {
@@ -28,7 +28,7 @@ export default class Tabs extends React.Component {
             }
         })
         return (
-            <div className={wrapClass}>
+            <div className={`comp-tabs ${wrapClass}`}>
                 {newChildren}
             </div>
         );

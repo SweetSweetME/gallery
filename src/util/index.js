@@ -1,0 +1,1 @@
+export { default as getUtil } from './getUtil';
