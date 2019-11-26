@@ -8,6 +8,7 @@ import AA from './aa';
 import Decorator from './decorator';
 import 'antd/dist/antd.css';
 import './style.less';
+import Home from './pages/Home';
 
 @HOC.Loading
 // @Decorator // 鼠标变👋
@@ -137,42 +138,45 @@ export default class Welcome extends React.Component {
         // 提供者提供数据
         return (
             <ThemeProvider value={{ themeColor: theme }}>
-                <Tabs wrapClass="gallery-tab">
-                    <TabBar type='tab' context='你给我站住！windows试一下'>
-                        tab1 噢😯
-                    </TabBar>
-                    <TabBar type='tab' context='对就是你 好使吗?'>
-                        tab2 哼∮
-                    </TabBar>
-                    <TabBar type='tab' context='踩我鞋了  用户链接可以点嘛? 邮箱不一致会怎样? 确实不能点击 没有验证的用户 现在改一下git config 邮箱 试试'>
-                        tab3 诶😳
-                    </TabBar>
-                </Tabs>
-                <h1>{hello.info}</h1>
-                {Avatar({
-                    imgUrl: require('./images/8.jpg'),
-                    text: 'once'
-                })}
-                { //<AA />
-                }
-                <select onChange={(value) => this.themeChange(value)}>
-                    <optgroup>
-                        <option value="red">红色</option>
-                        <option value="yellow">黄色</option>
-                    </optgroup>
-                </select>
-                <button onClick={() => this.addNum()}>新增数据</button>
-                <button onClick={() => this.deleteImg()}>删除数据</button>
-                <button onClick={this.changeMessage}>改变父组件内容</button>
-                <Page message={message} />
+                <Home />
                 {
-                    LO.isEmpty(photos) ? ''
-                        :
-                        LO.map(photos, (value) => (
-                            <article key={value.id}>
-                                <img src={value.url} />
-                            </article>
-                        ))
+                    // <Tabs wrapClass="gallery-tab">
+                    //     <TabBar type='tab' context='你给我站住！windows试一下  切个分支 git push/pull 试一下～'>
+                    //         tab1 噢😯
+                    //     </TabBar>
+                    //     <TabBar type='tab' context='对就是你 好使吗? github内容改变 再试一下！'>
+                    //         tab2 哼∮
+                    //     </TabBar>
+                    //     <TabBar type='tab' context='踩我鞋了  用户链接可以点嘛? 邮箱不一致会怎样? 确实不能点击 没有验证的用户 现在改一下git config 邮箱 试试'>
+                    //         tab3 诶😳
+                    //     </TabBar>
+                    // </Tabs>
+                    // <h1>{hello.info}</h1>
+                    // {Avatar({
+                    //     imgUrl: require('./images/8.jpg'),
+                    //     text: 'once'
+                    // })}
+                    // { //<AA />
+                    // }
+                    // <select onChange={(value) => this.themeChange(value)}>
+                    //     <optgroup>
+                    //         <option value="red">红色</option>
+                    //         <option value="yellow">黄色</option>
+                    //     </optgroup>
+                    // </select>
+                    // <button onClick={() => this.addNum()}>新增数据</button>
+                    // <button onClick={() => this.deleteImg()}>删除数据</button>
+                    // <button onClick={this.changeMessage}>改变父组件内容</button>
+                    // <Page message={message} />
+                    // {
+                    //     LO.isEmpty(photos) ? ''
+                    //         :
+                    //         LO.map(photos, (value) => (
+                    //             <article key={value.id}>
+                    //                 <img src={value.url} />
+                    //             </article>
+                    //         ))
+                    // }
                 }
             </ThemeProvider>
         )
