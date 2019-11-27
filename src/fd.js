@@ -24,7 +24,7 @@ function debounce(delay, action, init = undefined) {
                 tId = setTimeout(() => {
                     // result = action.apply(this, args);  // 绑定this
                     // console.log('第一个');
-                    console.log(thisArg);
+                    console.log(thisArg, '******');
                     result = Reflect.apply(target, thisArg, args)
                     resolve(result);
                 }, delay)

@@ -1,26 +1,26 @@
 const NAV_MAP = {
-    example: {
-        title: '组件测试页面',
-        routeConfig: {
-            exact: true,
-            component: 'Example',
-            path: '/example'
-        }
-    },
     home: {
         title: '主页',
+        compName: 'Home',
         routeConfig: {
             exact: true,
-            component: 'Home',
-            path: './home'
+            path: '/home'
+        }
+    },
+    example: {
+        title: '组件测试页面',
+        compName: 'Example',
+        routeConfig: {
+            exact: true,
+            path: '/example'
         }
     },
     illustration: {
         title: '插画',
+        compName: 'Illustration',
         routeConfig: {
             exact: true,
-            component: 'Illustration',
-            path: './illustration'
+            path: '/illustration'
         }
     }
 }
