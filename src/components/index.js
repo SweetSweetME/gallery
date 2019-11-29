@@ -6,3 +6,8 @@ export { default as Tabs } from './Tabs';
 export { default as TabBar } from './Tabs/TabBar';
 export { default as TabPanel } from './Tabs/TabPanel';
 export { default as NotFound } from './NotFound';
+export { default as DataProvider } from './RenderProps';
+export { default as Card } from './Card';
+export { default as Cat } from './Cat';
+export { default as ChainReaction } from './ChainReaction';
+export { default as Transfer } from './Transfer';

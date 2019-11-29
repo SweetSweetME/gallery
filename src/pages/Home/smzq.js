@@ -9,7 +9,7 @@ class SubCounter extends React.Component {
     shouldComponentUpdate(newProps, newState) {
         console.log('10、子组件是否需要更新');
         if (newProps.number < 5) return true;
-        return false
+        return true;
     }
 
     componentWillUpdate() {
@@ -56,7 +56,7 @@ class Counter extends React.Component {
     shouldComponentUpdate(newProps, newState) {
         console.log('6、父组件是否需要更新');
         if (newState.number < 15) return true;
-        return false
+        return true
     }
 
     componentWillUpdate() {
