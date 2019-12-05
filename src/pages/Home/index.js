@@ -6,6 +6,7 @@ import * as actions from './state/action';
 import SMZQ from './smzq';
 import { Select, } from 'antd';
 import selectOptions from './config';
+import './style.less';
 
 export default class Home extends React.Component {
 
@@ -68,16 +69,16 @@ export default class Home extends React.Component {
         console.log(dataArr);
         let httpArr = [];
         let start = 0;
-        for (let i = start; i < start + 10; i++) {
-            let data = dataArr.slice(i * 10, (i + 1) * 10);
-            httpArr.push(myHttp(url, data));
-        }
+        // for (let i = start; i < start + 10; i++) {
+        //     let data = dataArr.slice(i * 10, (i + 1) * 10);
+        //     httpArr.push(myHttp(url, data));
+        // }
 
-        Promise.all(httpArr).then(() => {
-            httpArr = []
-            start += 10;
-            // setTimeout(() => { httpArr }, 1000);
-        });
+        // Promise.all(httpArr).then(() => {
+        //     httpArr = []
+        //     start += 10;
+        //     // setTimeout(() => { httpArr }, 1000);
+        // });
 
         function myHttp(url, data) {
             fetch(url, {
@@ -91,8 +92,8 @@ export default class Home extends React.Component {
 
     }
 
-    getDetail = () => {
-        Http.get('https://jsonplaceholder.typicode.com/users')
+    getDetail = (id) => {
+        Http.get(`http://localhost:8091/posts/${id}`)
             .then((data) => {
                 this.setState({
                     showDetail: data
@@ -107,7 +108,7 @@ export default class Home extends React.Component {
     }
 
     getInfo = () => {
-        Http.get('https://jsonplaceholder.typicode.com/users')
+        Http.get('http://localhost:8091/posts')
             .then(data => {
                 this.setState({
                     articleInfo: data
@@ -218,6 +219,13 @@ export default class Home extends React.Component {
 
         return (
             <div>
+                <form action='https://jsonplaceholder.typicode.com/users'>
+                    <label htmlFor="tel">电话：</label>
+                    <input name="tel" type="tel" id="tel" required />
+                    <label htmlFor="email">邮箱：</label>
+                    <input name="email" type="email" id="email" />
+                    <input type="submit" value="提交" />
+                </form>
                 <Transfer
                     items={['12', '13', '14', '15', '16', '17']}
                     defaultValue={[1, 3, 5]}
@@ -272,7 +280,7 @@ export default class Home extends React.Component {
                         )
                     }
                 </Tabs>
-            </div >
+            </div>
         );
     }
 } 

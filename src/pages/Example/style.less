@@ -1,0 +1,52 @@
+.shape {
+    width: 0;
+    height: 0;
+    box-sizing: content-box;
+    border-bottom: 100px solid paleturquoise;
+    // border-top: 40px solid #bc8f8f;
+    border-left: 100px solid gold;
+    border-right: 100px solid antiquewhite;
+}
+.box {
+    height: 300px;
+    position: relative;
+    .ball {
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        position: absolute;
+        animation: jump 3s linear forwards; // infinite
+    }
+}
+
+@keyframes jump {
+    0%{
+        border-radius: 0;
+        bottom: 0;
+    }
+    10%{
+        bottom: 280px;
+    }
+    20%{
+        bottom: 0;
+    }
+    30%{
+        bottom: 200px;
+    }
+    40%{
+        bottom: 0;
+    }
+    50%{
+        bottom: 150px;
+    }
+    70%{
+        bottom: 0px;
+    }
+    90%{
+        bottom: 100px;
+    }
+    100%{
+        border-radius: 50%;
+        bottom: 0;
+    }
+}
