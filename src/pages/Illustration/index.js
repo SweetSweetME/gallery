@@ -1,6 +1,7 @@
 import React from 'react';
 import Store from './../reducer';
 import * as actions from './state/action';
+import './style.less';
 
 export default class Illustration extends React.Component {
 
@@ -23,11 +24,14 @@ export default class Illustration extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>插画集💐</h1>
-                <button onClick={() => { actions.add() }}>+</button>
-                <button onClick={() => { actions.dec() }}>-</button>
-                <span id="number"></span>
+            <div className="illus">
+                <div className="left">
+                    <h1>插画集💐</h1>
+                    <button onClick={() => { actions.add() }}>+</button>
+                    <button onClick={() => { actions.dec() }}>-</button>
+                    <span id="number"></span>
+                </div>
+                <div className="right"></div>
             </div>
         );
     }
