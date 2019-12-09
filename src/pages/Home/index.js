@@ -7,6 +7,7 @@ import SMZQ from './smzq';
 import { Select, } from 'antd';
 import selectOptions from './config';
 import './style.less';
+import jsonp from './../../jsonp';
 
 export default class Home extends React.Component {
 
@@ -93,12 +94,26 @@ export default class Home extends React.Component {
     }
 
     getDetail = (id) => {
-        Http.get(`http://localhost:8091/posts/${id}`)
-            .then((data) => {
-                this.setState({
-                    showDetail: data
-                });
+        // Http.get(`http://localhost:8091/posts/${id}`)
+        //     .then((data) => {
+        //         this.setState({
+        //             showDetail: data
+        //         });
+        //     });
+        new Promise((resolve, reject) => {
+            fetch(`http://localhost:8091/posts/${id}`).then((data) => {
+                resolve(data);
+            }).catch((data) => {
+                reject(data);
             });
+
+        }).then((data) => {
+            this.setState({
+                showDetail: data
+            });
+        }).catch((data) => {
+            console.log(`error: ${data}`);
+        });
     }
 
     callback(data) {
@@ -108,14 +123,24 @@ export default class Home extends React.Component {
     }
 
     getInfo = () => {
-        Http.get('http://localhost:8091/posts')
-            .then(data => {
-                this.setState({
-                    articleInfo: data
-                });
+        jsonp({
+            url: 'http://localhost:8091/posts',
+            params: {},
+            callback: 'show'
+        }).then(data => {
+            this.setState({
+                articleInfo: data
             });
+            console.log(data);
+        });
+        // Http.get('http://localhost:8091/posts')
+        //     .then(data => {
+        //         this.setState({
+        //             articleInfo: data
+        //         });
+        //     });
 
-        console.log(document.cookie);
+        // console.log(document.cookie);
     }
 
     renderTabPanel(info) {
@@ -210,6 +235,10 @@ export default class Home extends React.Component {
         }));
     }
 
+    clickLike() {
+        console.log('点赞');
+    }
+
     render() {
         const { state: { articleInfo, selectOptions } } = this;
         console.log(selectOptions);
@@ -218,68 +247,112 @@ export default class Home extends React.Component {
 
 
         return (
-            <div>
-                <form action='https://jsonplaceholder.typicode.com/users'>
-                    <label htmlFor="tel">电话：</label>
-                    <input name="tel" type="tel" id="tel" required />
-                    <label htmlFor="email">邮箱：</label>
-                    <input name="email" type="email" id="email" />
-                    <input type="submit" value="提交" />
-                </form>
-                <Transfer
-                    items={['12', '13', '14', '15', '16', '17']}
-                    defaultValue={[1, 3, 5]}
-                />
+            <div className="parent">
+                <div className="center">
+                    <div className="box box1"></div>
+                    <div className="box box2"></div>
+                    <div className="box box3"></div>
+                    <div className="listBox">
+                        <ul className="list">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div className="tableList">
+                        <ul className="list">
+                            <li>
+                                <span>123</span>
+                            </li>
+                            <li>
+                                <a>a标签</a>
+                            </li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div className="sameHeight">
+                        <div className="sameHeight1">中间center12</div>
+                        <div className="sameHeight2">left23</div>
+                        <div className="sameHeight3">right34</div>
+                    </div>
+                    <div className="container">
+                        <div className="left"> height:50px</div>
+                        <div className="main">height:100px</div>
+                        <div className="right">height:30px</div>
+                    </div>
+                    <form action='https://jsonplaceholder.typicode.com/users'>
+                        <label htmlFor="tel">电话：</label>
+                        <input name="tel" type="tel" id="tel" required />
+                        <label htmlFor="email">邮箱：</label>
+                        <input name="email" type="email" id="email" />
+                        <input type="submit" value="提交" />
+                    </form>
+                    <Transfer
+                        items={['12', '13', '14', '15', '16', '17']}
+                        defaultValue={[1, 3, 5]}
+                    />
 
-                <ChainReaction />
-                {
-                    // <Card>
-                    //     <div>真实dom</div>
-                    //     {this.getDom()}
-                    // </Card>
-                }
-                <button onClick={this.changeClick}>切换</button>
-                <Select
-                    mode="multiple"
-                    style={{ width: '100%' }}
-                    placeholder='Please select'
-                    defaultValue={['a10', 'c12']}
-                    onChange={this.handleChange}
-                    tokenSeparators={[',']}
-                >
-                    {LO.map(selectOptions, (selectOption) => <Select.Option key={selectOption}>{selectOption}</Select.Option>)}
-                </Select>
-                <div>
-                    {LO.reduce(selectOptions, (result, value) => result + ',' + value, '')}
-                </div>
-                {selectOptions}
-
-                {
-                    // <DataProvider>
-                    //     {(data) => <Cat name={data.name} />}
-                    // </DataProvider>
-                }
-                {
-                    // <DataProvider render1={(data) => <Cat name={data.name} />} />
-                }
-                {
-                    // <SMZQ />
-                }
-                <button onClick={() => { actions.changeRedTheme() }}>红色</button>
-                <button onClick={() => { actions.changeBuleTheme() }}>蓝色</button>
-
-                <h1 id="h">标题内容</h1>
-                <p id="p">内容明细 --- 修改字体颜色</p>
-                <Tabs>
+                    <ChainReaction />
                     {
-                        !LO.isEmpty(articleInfo) && LO.map(articleInfo, (value, key) => <TabBar
-                            key={key}
-                            panelContext={this.renderTabPanel(value)}>
-                            {value.title}
-                        </TabBar>
-                        )
+                        // <Card>
+                        //     <div>真实dom</div>
+                        //     {this.getDom()}
+                        // </Card>
                     }
-                </Tabs>
+                    <button onClick={this.changeClick}>切换</button>
+                    <Select
+                        mode="multiple"
+                        style={{ width: '100%' }}
+                        placeholder='Please select'
+                        defaultValue={['a10', 'c12']}
+                        onChange={this.handleChange}
+                        tokenSeparators={[',']}
+                    >
+                        {LO.map(selectOptions, (selectOption) => <Select.Option key={selectOption}>{selectOption}</Select.Option>)}
+                    </Select>
+                    <div>
+                        {LO.reduce(selectOptions, (result, value) => result + ',' + value, '')}
+                    </div>
+                    {selectOptions}
+
+                    {
+                        // <DataProvider>
+                        //     {(data) => <Cat name={data.name} />}
+                        // </DataProvider>
+                    }
+                    {
+                        // <DataProvider render1={(data) => <Cat name={data.name} />} />
+                    }
+                    {
+                        // <SMZQ />
+                    }
+                    <button onClick={() => { actions.changeRedTheme() }}>红色</button>
+                    <button onClick={() => { actions.changeBuleTheme() }}>蓝色</button>
+
+                    <h1 id="h">标题内容</h1>
+                    <p id="p">内容明细 --- 修改字体颜色</p>
+                    <Tabs>
+                        {
+                            !LO.isEmpty(articleInfo) && LO.map(articleInfo, (value, key) => <TabBar
+                                key={key}
+                                panelContext={this.renderTabPanel(value)}>
+                                {value.title}
+                            </TabBar>
+                            )
+                        }
+                    </Tabs>
+                </div>
+                <div className="left">
+                    left侧边栏
+                    <button onClick={() => { this.clickLike() }}>点赞</button>
+                </div>
+                <div className="right">
+                    right侧边栏
+                </div>
             </div>
         );
     }

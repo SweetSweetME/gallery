@@ -9,7 +9,7 @@ export default class Example extends React.Component {
     // }
 
     componentWillMount() {
-        alert($);
+        // alert($);
 
 
         setTimeout(() => {
