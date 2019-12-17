@@ -1,10 +1,12 @@
 import React from 'react';
+// import './../../filterCSS';
 import './style.less';
 
 export default class Example extends React.Component {
     // constructor() {
     state = {
-        count: 0
+        count: 0,
+        deg: 0
     }
     // }
 
@@ -132,16 +134,53 @@ export default class Example extends React.Component {
         this.outer.setAttribute('data-random', Math.random()); // DOM属性修改，触发微任务
     }
 
+    animation = () => {
+        const { state: { deg } } = this;
+        console.log('animation');
+        this.divJump.style.transform = `rotate(${deg}deg)`;
+        if (deg < 360) {
+            this.setState({
+                deg: deg + 20
+            });
+            window.requestAnimationFrame(this.animation);
+        }
+    }
+
+    changeBtnColor() {
+        this.annimationDiv.style.display = 'none';
+    }
+
 
 
 
     render() {
         console.log('rendered count:', this.state.count);
+        requestAnimationFrame(this.animation);
         return (
             <div>
+                <input type="week" />
+                <main className="bg"></main>
+                <section className="container">
+                    i am lhyt
+                </section>
+                <div className="line">
+                    <div ref={div => this.divJump = div}></div>
+                </div>
+                <div className="triangle">
+                    <button onClick={() => { this.changeBtnColor() }}>点击换颜色</button>
+                    <div ref={div => { this.annimationDiv = div; }}></div>
+                </div>
+                <div className="location">
+                    <div id="scroll">
+                        <div id="box"></div>
+                    </div>
+                </div>
                 <div className="shape"></div>
                 <div className="box">
                     <div className="ball"></div>
+                </div>
+                <div className="center">
+                    <div id="conterInner"></div>
                 </div>
 
                 <h1>组件测试页面📃</h1>

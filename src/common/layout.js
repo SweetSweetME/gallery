@@ -22,6 +22,14 @@ const NAV_MAP = {
             exact: true,
             path: '/illustration'
         }
+    },
+    http: {
+        title: 'http协议',
+        compName: 'Http',
+        routeConfig: {
+            exact: true,
+            path: '/http'
+        }
     }
 }
 
