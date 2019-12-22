@@ -1,10 +1,12 @@
 import React from 'react';
+// import './../../filterCSS';
 import './style.less';
 
 export default class Example extends React.Component {
     // constructor() {
     state = {
-        count: 0
+        count: 0,
+        deg: 0
     }
     // }
 
@@ -132,8 +134,25 @@ export default class Example extends React.Component {
         this.outer.setAttribute('data-random', Math.random()); // DOM属性修改，触发微任务
     }
 
+<<<<<<< HEAD
     inputSelectChange (){
         console.log(this.searchInput.value);
+=======
+    animation = () => {
+        const { state: { deg } } = this;
+        console.log('animation');
+        this.divJump.style.transform = `rotate(${deg}deg)`;
+        if (deg < 360) {
+            this.setState({
+                deg: deg + 20
+            });
+            window.requestAnimationFrame(this.animation);
+        }
+    }
+
+    changeBtnColor() {
+        this.annimationDiv.style.display = 'none';
+>>>>>>> 1d187b09360d94b136731f25df0525791b684005
     }
 
 
@@ -141,8 +160,10 @@ export default class Example extends React.Component {
 
     render() {
         console.log('rendered count:', this.state.count);
+        requestAnimationFrame(this.animation);
         return (
             <div>
+<<<<<<< HEAD
                 <div>
                     <input ref={input => {this.searchInput = input;}} onKeyUp={ () => this.inputSelectChange() } type="text" />
                     <svg width="150" height="100" viewBox="0 0 3 2">
@@ -150,10 +171,31 @@ export default class Example extends React.Component {
                         <rect width="1" height="2" x="2" fill="#324533" />
                         <rect width="1" height="2" x="1" fill="#d2232c" />
                     </svg>
+=======
+                <input type="week" />
+                <main className="bg"></main>
+                <section className="container">
+                    i am lhyt
+                </section>
+                <div className="line">
+                    <div ref={div => this.divJump = div}></div>
+                </div>
+                <div className="triangle">
+                    <button onClick={() => { this.changeBtnColor() }}>点击换颜色</button>
+                    <div ref={div => { this.annimationDiv = div; }}></div>
+                </div>
+                <div className="location">
+                    <div id="scroll">
+                        <div id="box"></div>
+                    </div>
+>>>>>>> 1d187b09360d94b136731f25df0525791b684005
                 </div>
                 <div className="shape"></div>
                 <div className="box">
                     <div className="ball"></div>
+                </div>
+                <div className="center">
+                    <div id="conterInner"></div>
                 </div>
 
                 <h1>组件测试页面📃</h1>

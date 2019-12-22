@@ -19,6 +19,10 @@ export default class Header extends React.Component {
         illustration: {
             title: '插画',
             indexNav: 1
+        },
+        http: {
+            title: 'http协议',
+            indexNav: 2
         }
     };
 
