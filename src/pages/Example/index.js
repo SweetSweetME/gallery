@@ -132,6 +132,10 @@ export default class Example extends React.Component {
         this.outer.setAttribute('data-random', Math.random()); // DOM属性修改，触发微任务
     }
 
+    inputSelectChange (){
+        console.log(this.searchInput.value);
+    }
+
 
 
 
@@ -139,6 +143,14 @@ export default class Example extends React.Component {
         console.log('rendered count:', this.state.count);
         return (
             <div>
+                <div>
+                    <input ref={input => {this.searchInput = input;}} onKeyUp={ () => this.inputSelectChange() } type="text" />
+                    <svg width="150" height="100" viewBox="0 0 3 2">
+                        <rect width="1" height="2" x="0" fill="#008d46" />
+                        <rect width="1" height="2" x="2" fill="#324533" />
+                        <rect width="1" height="2" x="1" fill="#d2232c" />
+                    </svg>
+                </div>
                 <div className="shape"></div>
                 <div className="box">
                     <div className="ball"></div>

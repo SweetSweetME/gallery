@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, TabBar, TabPanel, DataProvider, Cat, Card, ChainReaction, Transfer } from 'COMP';
+import { Panel, Tabs, TabBar, TabPanel, DataProvider, Cat, Card, ChainReaction, Transfer } from 'COMP';
 import Http from './../../fetch';
 import Store from './../reducer';
 import * as actions from './state/action';
@@ -8,6 +8,7 @@ import { Select, } from 'antd';
 import selectOptions from './config';
 import './style.less';
 import jsonp from './../../jsonp';
+import BlockCenter from './modules/BlockCenter';
 
 export default class Home extends React.Component {
 
@@ -248,6 +249,9 @@ export default class Home extends React.Component {
 
         return (
             <div className="parent">
+                <Panel title="我是标题">
+                    <BlockCenter />
+                </Panel>
                 <div className="center">
                     <div className="box box1"></div>
                     <div className="box box2"></div>
